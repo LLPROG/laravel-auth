@@ -87,8 +87,10 @@
 **CHIUDERE TUTTE LE TAB DI VSCODE**
 
 1. Creare le diverse view per resource:
+
     - index.blade.php
     - show.blade.php
     - create.blade.php
     - edit.blade.php
+
 1. Creare il layout di base con admin.blade.php (prendere inspirazione da quelli gia esistenti)
