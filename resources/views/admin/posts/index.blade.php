@@ -1,10 +1,6 @@
 @extends('layouts.admin')
 
 @section('title', 'Index')
-{{--
-@section('content')
-
-@endsection --}}
 
 @section('content')
     <div class="container">
@@ -18,6 +14,7 @@
                         <tr>
                         <th class="text-center" scope="col">#</th>
                         <th class="text-center" scope="col">Title</th>
+                        <th class="text-center" scope="col">Content</th>
                         <th class="text-center" scope="col">Slug</th>
                         <th class="text-center" scope="col">Created At</th>
                         <th class="text-center" scope="col">Updated At</th>
@@ -29,7 +26,9 @@
                             <tr>
                                 <th class="text-center" scope="row">{{ $post->id }}</th>
                                 <td>{{ $post->title }}</td>
+                                <td>{{ $post->content }}</td>
                                 <td>{{ $post->slug }}</td>
+
                                 <td>{{ date('d/m/Y', strtotime($post->created_at)) }}</td>
                                 <td>{{ date('d/m/Y', strtotime($post->updated_at)) }}</td>
                                 <td>
@@ -38,8 +37,18 @@
                                 <td>
                                     <a class="btn btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">Edit</a>
                                 </td>
-                                <td class="text-center">
-                                    <button class="btn btn-danger btn-delete" data-id="{{ $post->id }}">Delete</button>
+                                <td>
+                                    <div class="row">
+                                        <div class="col">
+                                            <form method="POST" action="{{  route('admin.posts.destroy', $post->id) }}" >
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger btn-delete">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
