@@ -9,6 +9,13 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col py-3 text-uppercase">
+                <a href="{{ route('admin.posts.index') }}">
+                    Go to the list-post
+                </a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col">
                 <h1>
                     {{ $post->title }}

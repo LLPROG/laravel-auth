@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container">
+        <div class="row">
+            <div class="col py-3 text-uppercase">
+                <a href="{{ route('admin.posts.create') }}">
+                    Create a new post
+                </a>
+            </div>
+        </div>
         @if (session('deleted'))
             <div class="alert alert-warning">{{ session('deleted') }}</div>
         @endif

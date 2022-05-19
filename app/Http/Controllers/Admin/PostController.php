@@ -45,15 +45,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $postData = $request->all();
+        $newPostData = $request->all();
         //validazione
         $request->validate($this->validationRules);
+        $newPostData['slug'] = Post::slugGenerator($newPostData['title']);
 
-        $postTable = new Comic();
-        $postTable->fill($postData);
-        $result = $postTable->save();
+        $post = new Post();
+        $post->fill($newPostData);
+        $result = $post->save();
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.show', $post->id);
     }
 
     /**
